@@ -369,22 +369,14 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:3fb8a401fe8c3d73e23b477915bbd9ff0b2bcb331711726a4fd5be280ad53d5d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Alpha" src="https://img.shields.io/badge/maturity-Alpha-red.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/server-backend/tree/18.0/polars_process"><img alt="OCA/server-backend" src="https://img.shields.io/badge/github-OCA%2Fserver--backend-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/server-backend-18-0/server-backend-18-0-polars_process"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/server-backend&amp;target_branch=18.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>From an imported spreadsheet (xlsx) or db query, this module allows to
-transform data in Polars dataframe and process them according to rules
-in order to:</p>
-<ul class="simple">
-<li>filter data and display</li>
-<li>obtain another dataframe with only the expected data to use in Odoo</li>
-</ul>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Alpha" src="https://img.shields.io/badge/maturity-Alpha-red.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/Akretion/polars-odoo/tree/18.0/polars_process"><img alt="Akretion/polars-odoo" src="https://img.shields.io/badge/github-Akretion%2Fpolars--odoo-lightgray.png?logo=github" /></a></p>
+<p>From an imported spreadsheet (xlsx) this module allows to transform data
+in Polars dataframe and process in order to achieve powerful operations
+on data directly on columns.</p>
 <p>A such dataframe can help to prepare data in order to be used to
-create/update or import</p>
-<p>Typical use case:</p>
-<p>You receive files from your vendors and these files have many difference
-(column names, number of columns, dirty paging) but contains data
-related to same concepts. Then you want apply them a common process to
-automate things. For that you need to transform/arrange data to the same
-way</p>
+create/update or import.</p>
+<p>If you want apply them a common process to automate things whatever
+source, polars can help you.</p>
 <p>Why dataframe ?</p>
 <ul class="simple">
 <li>a dataframe is a kind of in-memory dataset on which you can operate</li>
@@ -392,7 +384,7 @@ way</p>
 but in memory: you don’t need to iterate on each line to perform
 operations</li>
 <li>the operations are powerful: filter, add column resulting from
-calculation, select a subset of data</li>
+calculation, select a subset of data.</li>
 </ul>
 <p>Why Polars ?</p>
 <ul class="simple">
@@ -420,10 +412,10 @@ Only for development or testing purpose, do not use in production.
 </div>
 <div class="section" id="bug-tracker">
 <h1><a class="toc-backref" href="#toc-entry-1">Bug Tracker</a></h1>
-<p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/server-backend/issues">GitHub Issues</a>.
+<p>Bugs are tracked on <a class="reference external" href="https://github.com/Akretion/polars-odoo/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/server-backend/issues/new?body=module:%20polars_process%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/Akretion/polars-odoo/issues/new?body=module:%20polars_process%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -448,17 +440,10 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 </div>
 <div class="section" id="maintainers">
 <h2><a class="toc-backref" href="#toc-entry-5">Maintainers</a></h2>
-<p>This module is maintained by the OCA.</p>
-<a class="reference external image-reference" href="https://odoo-community.org">
-<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
-</a>
-<p>OCA, or the Odoo Community Association, is a nonprofit organization whose
-mission is to support the collaborative development of Odoo features and
-promote its widespread use.</p>
-<p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
+<p>Current maintainer:</p>
 <p><a class="reference external image-reference" href="https://github.com/bealdav"><img alt="bealdav" src="https://github.com/bealdav.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/server-backend/tree/18.0/polars_process">OCA/server-backend</a> project on GitHub.</p>
-<p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/Akretion/polars-odoo/tree/18.0/polars_process">Akretion/polars-odoo</a> project on GitHub.</p>
+<p>You are welcome to contribute.</p>
 </div>
 </div>
 </div>

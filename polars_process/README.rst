@@ -16,35 +16,21 @@ Polars Process
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fserver--backend-lightgray.png?logo=github
-    :target: https://github.com/OCA/server-backend/tree/18.0/polars_process
-    :alt: OCA/server-backend
-.. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/server-backend-18-0/server-backend-18-0-polars_process
-    :alt: Translate me on Weblate
-.. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/server-backend&target_branch=18.0
-    :alt: Try me on Runboat
+.. |badge3| image:: https://img.shields.io/badge/github-Akretion%2Fpolars--odoo-lightgray.png?logo=github
+    :target: https://github.com/Akretion/polars-odoo/tree/18.0/polars_process
+    :alt: Akretion/polars-odoo
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3|
 
-From an imported spreadsheet (xlsx) or db query, this module allows to
-transform data in Polars dataframe and process them according to rules
-in order to:
-
--  filter data and display
--  obtain another dataframe with only the expected data to use in Odoo
+From an imported spreadsheet (xlsx) this module allows to transform data
+in Polars dataframe and process in order to achieve powerful operations
+on data directly on columns.
 
 A such dataframe can help to prepare data in order to be used to
-create/update or import
+create/update or import.
 
-Typical use case:
-
-You receive files from your vendors and these files have many difference
-(column names, number of columns, dirty paging) but contains data
-related to same concepts. Then you want apply them a common process to
-automate things. For that you need to transform/arrange data to the same
-way
+If you want apply them a common process to automate things whatever
+source, polars can help you.
 
 Why dataframe ?
 
@@ -53,7 +39,7 @@ Why dataframe ?
    but in memory: you don't need to iterate on each line to perform
    operations
 -  the operations are powerful: filter, add column resulting from
-   calculation, select a subset of data
+   calculation, select a subset of data.
 
 Why Polars ?
 
@@ -74,10 +60,10 @@ Why Polars ?
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/server-backend/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/Akretion/polars-odoo/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/server-backend/issues/new?body=module:%20polars_process%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/Akretion/polars-odoo/issues/new?body=module:%20polars_process%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -99,24 +85,14 @@ Contributors
 Maintainers
 -----------
 
-This module is maintained by the OCA.
-
-.. image:: https://odoo-community.org/logo.png
-   :alt: Odoo Community Association
-   :target: https://odoo-community.org
-
-OCA, or the Odoo Community Association, is a nonprofit organization whose
-mission is to support the collaborative development of Odoo features and
-promote its widespread use.
-
 .. |maintainer-bealdav| image:: https://github.com/bealdav.png?size=40px
     :target: https://github.com/bealdav
     :alt: bealdav
 
-Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+Current maintainer:
 
 |maintainer-bealdav| 
 
-This module is part of the `OCA/server-backend <https://github.com/OCA/server-backend/tree/18.0/polars_process>`_ project on GitHub.
+This module is part of the `Akretion/polars-odoo <https://github.com/Akretion/polars-odoo/tree/18.0/polars_process>`_ project on GitHub.
 
-You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
+You are welcome to contribute.

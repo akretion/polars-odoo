@@ -23,6 +23,7 @@ class DfSource(models.Model):
     )
     name = fields.Char(required=True, help="Supported files: .xlsx")
     time = fields.Integer(readonly=True, help="Execution time in seconds")
+    count = fields.Integer(readonly=True, string="#", help="Records count")
     sequence = fields.Integer(default="5")
     state = fields.Selection(
         selection=[("draft", "Draft"), ("ready", "Ready"), ("done", "Done")],

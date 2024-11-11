@@ -5,12 +5,7 @@
             <form>
                 <group>
                     <field name="name" />
-                    <field
-                        name="params"
-                        widget="code"
-                        invisible="not query"
-                        options="{'mode': 'python'}"
-                    />
+                    <field name="params" widget="code" options="{'mode': 'python'}" />
                     <field name="query" widget="code" />
                     <field name="db_conf_id" invisible="1" />
                 </group>
