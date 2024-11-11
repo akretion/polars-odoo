@@ -1,0 +1,41 @@
+<odoo>
+    <record id="db_config_form" model="ir.ui.view">
+        <field name="model">db.config</field>
+        <field name="inherit_id" ref="polars_db_process.db_config_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    type="object"
+                    name="get_db_metadata"
+                    string="Metadata"
+                    invisible="not row_count_query"
+                />
+                <button
+                    type="action"
+                    name="%(db_table_action)d"
+                    context="{'search_db_conf_id': id, 'majors': 1}"
+                    string="Tables"
+                    invisible="not db_table_ids"
+                />
+            </xpath>
+            <field name="name" position="after">
+                <field name="table_exclude" />
+            </field>
+            <field name="password" position="after">
+                <field name="db_type_id" />
+            </field>
+            <field name="string_connexion" position="before">
+                <field name="manually_entries" invisible="not manually_entries" />
+            </field>
+            <xpath expr="//group[@name='connexion']" position="after">
+                <group col="4">
+                    <field name="table_sort" invisible="not db_table_ids" />
+                    <separator string="Tables" />
+                    <field name="db_table_ids" nolabel="1" editable="bottom">
+                        <list default_order="alias DESC" />
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
