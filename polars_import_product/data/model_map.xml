@@ -1,0 +1,13 @@
+<odoo noupdate="0">
+    <record id="product" model="model.map">
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="code">Products</field>
+        <field name="action">import</field>
+    </record>
+
+    <record id="product_cat" model="model.map">
+        <field name="model_id" ref="product.model_product_category" />
+        <field name="code">Categories</field>
+        <field name="action">import</field>
+    </record>
+</odoo>
