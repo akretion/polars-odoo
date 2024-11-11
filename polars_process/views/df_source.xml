@@ -9,9 +9,11 @@
                         <group>
                             <field name="model_map_id" />
                             <field name="name" />
+                            <field name="state" />
                         </group>
                         <group name="right">
                             <field name="rename" />
+                            <field name="count" />
                             <field
                                 name="template"
                                 options="{'accepted_file_extensions': '.xlsx'}"
@@ -36,12 +38,13 @@
                     title="Start process"
                 />
                 <field name="time" />
+                <field name="count" />
                 <field name="name" />
                 <field name="state" />
                 <button
                     type="object"
                     name="reset_process"
-                    class="fa fa-refresh"
+                    class="fa fa-arrow-left"
                     invisible="state!='done'"
                     title="Not yet implemented in this module"
                 />
@@ -49,6 +52,7 @@
                     name="template"
                     filename="name"
                     widget="binary"
+                    optional="show"
                     options="{'accepted_file_extensions': '.xlsx'}"
                 />
                 <field name="rename" optional="hide" />

@@ -7,22 +7,17 @@ from odoo.tools.safe_eval import safe_eval
 
 from odoo.addons.polars_process import slug_me
 
+from .df_query import REQUIRED_KEYS
+
 MODULE = __name__[12 : __name__.index(".", 13)]
-
-HELP = """Supported: .xlsx  files and .sql
-Sql files may contains a comment on first line captured by File Parameters field
-to be mapped automatically with related objects, i.e:\n
-{'map_model': 'my_delivery_address', 'db_conf': mydb, 'where': [{''}]}
-
-"""
 
 
 class DfSource(models.Model):
     _inherit = "df.source"
 
-    name = fields.Char(help=HELP)
+    name = fields.Char(help="Files from placed in 'my_module/data/df'")
     query = fields.Text(string="Sql", related="query_id.query")
-    where = fields.Char(readonly=True, help="Sql where condition")
+    where = fields.Text(readonly=True, help="Sql where condition")
     db_conf_id = fields.Many2one(
         comodel_name="db.config", help="Database Configuration"
     )
@@ -43,6 +38,7 @@ class DfSource(models.Model):
 
     def _file_hook(self, vals, file, db_confs, model_map):
         "Map sql file with the right Odoo model via model_map and the right db.config"
+        # TODO improve this dirty code
         vals = super()._file_hook(vals, file, db_confs, model_map)
         if ".sql" in file and model_map:
             content = self._get_file(file).decode("utf-8")
@@ -71,7 +67,7 @@ class DfSource(models.Model):
                         ) from err
                     # {'map_code': chinook customers', 'db_conf': Chinook}
                     keys = ("model_code", "db_conf", "name")
-                    if [x for x in keys if x not in meta]:
+                    if [x for x in REQUIRED_KEYS if x not in meta]:
                         raise ValidationError(
                             f"At least one of these keys {keys} "
                             f"is not in params: {vals['name']}"
@@ -94,6 +90,8 @@ class DfSource(models.Model):
                         "where ",
                     ):
                         query = query.replace(word, word.upper())
+                    if "WHERE 1=1" not in query:
+                        raise ValidationError(_(f"'WHERE 1=1' must be in query {file}"))
                     sequence = meta.get("sequence", "0")
                     qvals = {
                         "db_conf_id": db_confs.get(meta["db_conf"]),
@@ -130,12 +128,7 @@ class DfSource(models.Model):
         if self.query_id:
             sql = self.query
             if self.where:
-                if "WHERE" in sql:
-                    raise ValidationError(_("Where clause in 2 places: remove it one"))
-                if "ORDER BY" in sql:
-                    sql = sql.replace("ORDER BY", f"WHERE {self.where}\nORDER BY")
-                else:
-                    sql += self.where
+                sql = sql.replace("1=1", f"1=1 AND {self.where}")
         return sql
 
     def _get_db_confs(self):

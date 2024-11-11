@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "Akretion, Odoo Community Association (OCA)",
     "development_status": "Alpha",
-    "website": "https://github.com/OCA/server-backend",
+    "website": "https://github.com/akretion/polars-odoo",
     "maintainers": ["bealdav"],
     "depends": [
         "polars_process",

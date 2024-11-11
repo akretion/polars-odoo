@@ -22,7 +22,7 @@ class DfImport(models.Model):
         rebels = {}
         rebel_model = self.env["model.map"]._get_touchy_fields_to_import().get(model)
         if rebel_model:
-            for key in self.env["model.map"]._get_touchy_fields_to_import().get(model):
+            for key in self.env["model.map"]._get_touchy_fields_to_import()[model]:
                 if key in vals:
                     rebels[key] = vals.pop(key)
         return rebels
@@ -34,7 +34,7 @@ class DfImport(models.Model):
             {
                 "res_id": record.id,
                 "model": model,
-                "module": self.model_map_id._get_uidstring_module_name(),
+                "module": self.env["model.map"]._get_uidstring_module_name(),
                 "name": uidstring,
                 "noupdate": False,
             }

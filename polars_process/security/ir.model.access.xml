@@ -39,9 +39,9 @@
         <field name="perm_unlink" eval="1" />
     </record>
 
-    <record id="df.import_all" model="ir.model.access">
+    <record id="df_import_all" model="ir.model.access">
         <field name="name">df.import</field>
-        <field name="model_id" ref="model_df.import" />
+        <field name="model_id" ref="model_df_import" />
         <field name="group_id" ref="base.group_user" />
         <field name="perm_read" eval="1" />
         <field name="perm_create" eval="1" />

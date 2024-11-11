@@ -1,18 +1,20 @@
-from odoo import fields, models
+from odoo import _, fields, models
+from odoo.exceptions import ValidationError
+from odoo.tools.safe_eval import safe_eval
 
 MODULE = __name__[12 : __name__.index(".", 13)]
 
-HELP = """Supported files: .xlsx and .sql
-Sql files may contains a comment on first line captured by File Parameters field
-to be mapped automatically with related objects, i.e:\n
-{'map': 'my_delivery_address', 'db_conf': mydb, 'where': ['']}
-
--- {'model': 'product.product', 'db_conf': mydb, 'code': 'my_delivery_address'}
+HELP = """Populated by Sql files which contains comments on first lines:
+Create an new record to see an example.
 """
+REQUIRED_KEYS = ["model_code", "db_conf", "name"]
 
-PARAMS = """{'model': False, 'code': False, 'db_conf': False}
-# 'model/code' to guess model.map', db_conf' name to guess db.config
-"""
+PARAMS = (
+    "{'model_code': 'my model.map code', 'db_conf': 'my conf', "
+    "'name': 'name of query', 'sequence': 5,\n"
+    "'where': [\"myfield like 'A%'\", 'active = 1']}\n"
+    f"# Required keys are {REQUIRED_KEYS}"
+)
 
 
 class DfQuery(models.Model):
@@ -21,15 +23,27 @@ class DfQuery(models.Model):
     _description = "Sql query"
     _order = "sequence ASC"
 
-    name = fields.Char(help=HELP)
-    query = fields.Text(help="Sql query")
+    name = fields.Char()
+    query = fields.Text(
+        help="SQL query coming from .sql files placed in 'my_module/data/df'"
+    )
     params = fields.Char(
         string="File Parameters",
         default=PARAMS,
         readonly=True,
-        help="Coming from sql files",
+        help=HELP,
     )
-    sequence = fields.Integer(help="Sql query")
+    sequence = fields.Integer()
     db_conf_id = fields.Many2one(
         comodel_name="db.config", required=True, help="Database Configuration"
     )
+
+    def _get_params(self):
+        self.ensure_one()
+        try:
+            params = safe_eval(self.params)
+        except Exception as err:
+            raise ValidationError(
+                _(f"Params '{self.name}' evaluation failed\n{self.params}")
+            ) from err
+        return params
