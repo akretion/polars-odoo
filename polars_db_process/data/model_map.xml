@@ -1,0 +1,7 @@
+<odoo noupdate="1">
+    <record id="partner_import" model="model.map">
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="code">partner_import</field>
+        <field name="action">import</field>
+    </record>
+</odoo>
