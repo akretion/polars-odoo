@@ -44,7 +44,7 @@
                 <button
                     type="object"
                     name="reset_process"
-                    class="fa fa-refresh"
+                    class="fa fa-arrow-left"
                     invisible="state!='done'"
                     title="Not yet implemented in this module"
                 />
